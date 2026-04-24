@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delta Verge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111111;
+      --border: #222222;
+      --white: #f0f0f0;
+      --muted: #555555;
+      --accent: #ffffff;
+      --radius: 12px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--white);
+      font-family: 'Syne', sans-serif;
+      min-height: 100vh;
+      padding: 48px 16px;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    /* ── Profile ── */
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .profile img {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid var(--border);
+    }
+
+    .profile h1 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--accent);
+    }
+
+    .profile p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      font-family: 'Space Mono', monospace;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .divider span {
+      font-size: 0.7rem;
+      font-family: 'Space Mono', monospace;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      white-space: nowrap;
+    }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    /* ── Tile ── */
+    .tile {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--surface);
+      display: flex;
+      flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .tile:hover {
+      border-color: #444;
+      transform: translateY(-2px);
+    }
+
+    .tile-img {
+      padding: 14px 14px 0;
+    }
+
+    .tile-img img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+      background: var(--border);
+    }
+
+    .tile-footer {
+      padding: 10px 14px 14px;
+    }
+
+    .tile-footer a {
+      display: block;
+      font-size: 0.78rem;
+      font-family: 'Space Mono', monospace;
+      color: var(--white);
+      text-decoration: none;
+      word-break: break-all;
+      opacity: 0.55;
+      transition: opacity 0.15s;
+    }
+
+    .tile-footer a:hover { opacity: 1; }
+
+    .tile-footer .label {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+      font-family: 'Syne', sans-serif;
+    }
+
+    /* ── Responsive ── */
+    @media (min-width: 480px) {
+      .grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (min-width: 700px) {
+      .grid { grid-template-columns: repeat(4, 1fr); }
+      body { padding: 64px 24px; }
+    }
+
+    .grid > a {
+      display: contents;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <div class="profile">
+      <img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497255914040987668/profile.jpg?ex=69ecdbbb&is=69eb8a3b&hm=ea46e79ed20c365b398c27aea8095b435527585f0c962cc72e5227544309d9ce&" alt="avatar" />
+      <h1>Peace Duke</h1>
+      <p>Зовут меня Дюк, я любитель разработки игр. Обращайтесь на ТЫ, пишите честно - меня это НЕ заденет. Ссылки под профилем — мои личные, остальное — от DeltaVerge.</p>
+    </div>
+
+
+
+    <div class="divider"><span>Source</span></div>
+    
+    <div class="grid">
+      <a href="https://github.com/pe4ceduk3/Unable_to_fly/releases">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497266301628977294/Untitled_03-19-2026_09-42-59.png?ex=69ece568&is=69eb93e8&hm=56f94e50f58d44858d700058dd22a44d9a6acb4aa207b96c6bc8fc107e196f59&" alt="Unable_to_fly" /></div>
+          <div class="tile-footer">
+            <div class="label">Unable to fly</div>
+            <a href="#">GitHub</a>
+          </div>
+        </div>
+      </a>
+      <a href="https://github.com/pe4ceduk3/PeaceDuke-Base">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497265873701048452/loading.gif?ex=69ece502&is=69eb9382&hm=0953dc7d5e8c580a1fe492999869d0e1432c875a87e7328e237e42e55c053e8e&" alt="Unable_to_fly" /></div>
+          <div class="tile-footer">
+            <div class="label">PeaceDuke-Base</div>
+            <a href="#">GitHub</a>
+          </div>
+        </div>
+      </a>
+
+
+    </div>
+
+    <div class="divider"><span>Delta Verge</span></div>
+    
+    <div class="grid">
+      <a href="https://youtube.com/@DeltaVergeGames">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497265459203149824/max.png?ex=69ece49f&is=69eb931f&hm=2ca97fb710418204c1853a67b639ab7f6b36559f344e31235aeedd4083b74d04&" alt="Discord" /></div>
+          <div class="tile-footer">
+            <div class="label">YouTube</div>
+            <a href="#">DeltaVergeGames</a>
+          </div>
+        </div>
+      </a>
+      <a href="https://discord.gg/Dj5Vk6TRtZ">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497265459203149824/max.png?ex=69ece49f&is=69eb931f&hm=2ca97fb710418204c1853a67b639ab7f6b36559f344e31235aeedd4083b74d04&" alt="Discord" /></div>
+          <div class="tile-footer">
+            <div class="label">Discord Server</div>
+            <a href="#">DeltaVergeGames</a>
+          </div>
+        </div>
+      </a>
+      <a href="https://t.me/+HTa3YGH-gZRmMmMy">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497265459203149824/max.png?ex=69ece49f&is=69eb931f&hm=2ca97fb710418204c1853a67b639ab7f6b36559f344e31235aeedd4083b74d04&" alt="Discord" /></div>
+          <div class="tile-footer">
+            <div class="label">TG Channel</div>
+            <a href="#">DeltaVergeGames</a>
+          </div>
+        </div>
+      </a>
+      <a href="https://deltavergegames.itch.io">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497265459203149824/max.png?ex=69ece49f&is=69eb931f&hm=2ca97fb710418204c1853a67b639ab7f6b36559f344e31235aeedd4083b74d04&" alt="Discord" /></div>
+          <div class="tile-footer">
+            <div class="label">Itch.io</div>
+            <a href="#">DeltaVergeGames</a>
+          </div>
+        </div>
+      </a>
+    </div>
+
+
+    
+
+    <div class="divider"><span>Personal</span></div>
+
+    <div class="grid">
+      <a href="https://youtube.com/channel/UCVX6QOE7uOvud7J7Bi5XB6g">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497255914040987668/profile.jpg?ex=69ecdbbb&is=69eb8a3b&hm=ea46e79ed20c365b398c27aea8095b435527585f0c962cc72e5227544309d9ce&" alt="YouTube" /></div>
+          <div class="tile-footer">
+            <div class="label">YouTube</div>
+            <a href="#">Peace Duke</a>
+          </div>
+        </div>
+      </a>
+      <a href="https://twitch.tv/p3ac3_duk3/">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497255914040987668/profile.jpg?ex=69ecdbbb&is=69eb8a3b&hm=ea46e79ed20c365b398c27aea8095b435527585f0c962cc72e5227544309d9ce&" alt="Twitch" /></div>
+          <div class="tile-footer">
+            <div class="label">Twitch</div>
+            <a href="#">P3ac3_Duk3</a>
+          </div>
+        </div>
+      </a>
+      <a href="t.me/peacedukedev">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497255914040987668/profile.jpg?ex=69ecdbbb&is=69eb8a3b&hm=ea46e79ed20c365b398c27aea8095b435527585f0c962cc72e5227544309d9ce&" alt="Twitch" /></div>
+          <div class="tile-footer">
+            <div class="label">TG Channel</div>
+            <a href="#">@peacedukedev</a>
+          </div>
+        </div>
+      </a>
+      <a href="https://discord.com/users/528886591846875153">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497255914040987668/profile.jpg?ex=69ecdbbb&is=69eb8a3b&hm=ea46e79ed20c365b398c27aea8095b435527585f0c962cc72e5227544309d9ce&" alt="Discord" /></div>
+          <div class="tile-footer">
+            <div class="label">Discord Profile</div>
+            <a href="#">@pe4ceduk3</a>
+          </div>
+        </div>
+      </a>
+      <a href="https://t.me/pe4ceduk3">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497255914040987668/profile.jpg?ex=69ecdbbb&is=69eb8a3b&hm=ea46e79ed20c365b398c27aea8095b435527585f0c962cc72e5227544309d9ce&" alt="Telegram" /></div>
+          <div class="tile-footer">
+            <div class="label">Telegram Profile</div>
+            <a href="#">@pe4ceduk3</a>
+          </div>
+        </div>
+      </a>
+      <a href="https://github.com/SimpleSyimyk">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497255914040987668/profile.jpg?ex=69ecdbbb&is=69eb8a3b&hm=ea46e79ed20c365b398c27aea8095b435527585f0c962cc72e5227544309d9ce&" alt="GitHub" /></div>
+          <div class="tile-footer">
+            <div class="label">GitHub Profile</div>
+            <a href="#">Peace Duke</a>
+          </div>
+        </div>
+      </a>
+      <a href="https://steamcommunity.com/profiles/76561199543936353">
+        <div class="tile">
+          <div class="tile-img"><img src="https://ugc.production.linktr.ee/97e9c2f9-4121-4398-8e01-0e47151cff17_1000396558.gif" alt="Twitch" /></div>
+          <div class="tile-footer">
+            <div class="label">Steam Profile</div>
+            <a href="#">Peace Duke</a>
+          </div>
+        </div>
+      </a>
+      <a href="https://www.reddit.com/u/pe4ceduk3">
+        <div class="tile">
+          <div class="tile-img"><img src="https://cdn.discordapp.com/attachments/1481202186192158792/1497255914040987668/profile.jpg?ex=69ecdbbb&is=69eb8a3b&hm=ea46e79ed20c365b398c27aea8095b435527585f0c962cc72e5227544309d9ce&" alt="Twitch" /></div>
+          <div class="tile-footer">
+            <div class="label">Reddit Profile</div>
+            <a href="#">@pe4ceduk3</a>
+          </div>
+        </div>
+      </a>
+
+
+
+
+    </div>
+  </div>
+</body>
+</html>
