@@ -92,14 +92,19 @@
       white-space: nowrap;
     }
 
-    /* ── Grid ── */
+    /* ── Grid — всегда 2 колонки, на широком 4 ── */
     .grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
     }
 
-    /* ── Tile ── */
+    @media (min-width: 700px) {
+      .grid { grid-template-columns: repeat(4, 1fr); }
+      body { padding: 64px 24px; }
+    }
+
+    /* ── Tile (Source) ── */
     .tile {
       border: 1px solid var(--border);
       border-radius: var(--radius);
@@ -129,15 +134,6 @@
       background: var(--border);
     }
 
-    .tile-img img::after {
-      content: '';
-      display: block;
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      background: var(--border);
-      border-radius: 8px;
-    }
-
     .tile-footer {
       padding: 10px 14px 14px;
     }
@@ -162,15 +158,91 @@
 
     .tile:hover .sub { opacity: 1; }
 
-    /* ── Responsive ── */
-    @media (min-width: 480px) {
-      .grid { grid-template-columns: repeat(3, 1fr); }
+    /* ── Group Card grid — 1 колонка на мобиле, 2 на пк ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
     }
 
     @media (min-width: 700px) {
-      .grid { grid-template-columns: repeat(4, 1fr); }
-      body { padding: 64px 24px; }
+      .cards-grid { grid-template-columns: repeat(2, 1fr); }
     }
+
+    .group-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .group-card-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+    }
+
+    .group-card-top img {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid var(--border);
+    }
+
+    .group-card-top img.round {
+      border-radius: 50%;
+    }
+
+    .group-card-info .label {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-family: 'Syne', sans-serif;
+    }
+
+    .group-card-links {
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .group-card-links a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 20px;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+    }
+
+    .group-card-links a:last-child {
+      border-bottom: none;
+    }
+
+    .group-card-links a:hover {
+      background: #1a1a1a;
+    }
+
+    .link-label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: 'Syne', sans-serif;
+    }
+
+    .arrow {
+      color: var(--muted);
+      font-size: 0.75rem;
+      opacity: 0.4;
+      transition: opacity 0.15s;
+      flex-shrink: 0;
+    }
+
+    .group-card-links a:hover .arrow { opacity: 1; }
   </style>
 </head>
 <body>
@@ -187,7 +259,7 @@
     <div class="divider"><span>Source</span></div>
 
     <div class="grid">
-      <a target="_blank" href="https://github.com/pe4ceduk3/PeaceDuke-Base/releases/tag/v0.1.0.260323P" class="tile">
+      <a href="https://github.com/pe4ceduk3/Unable_to_fly/releases" class="tile" target="_blank">
         <div class="tile-img">
           <img src="site/img/avatars/unable-to-fly.png" alt="Unable to fly" />
         </div>
@@ -197,7 +269,7 @@
         </div>
       </a>
 
-      <a target="_blank" href="https://github.com/pe4ceduk3/PeaceDuke-Base" class="tile">
+      <a href="https://github.com/pe4ceduk3/PeaceDuke-Base" class="tile" target="_blank">
         <div class="tile-img">
           <img src="site/img/avatars/peaceduke-base.gif" alt="PeaceDuke Base" />
         </div>
@@ -211,136 +283,94 @@
     <!-- Delta Verge -->
     <div class="divider"><span>Delta Verge</span></div>
 
-    <div class="grid">
-      <a target="_blank" href="https://youtube.com/@DeltaVergeGames" class="tile">
-        <div class="tile-img">
+    <div class="cards-grid">
+      <div class="group-card">
+        <div class="group-card-top">
           <img src="site/img/avatars/delta-verge.png" alt="Delta Verge" />
+          <div class="group-card-info">
+            <span class="label">Delta Verge</span>
+          </div>
         </div>
-        <div class="tile-footer">
-          <div class="label">YouTube</div>
-          <span class="sub">DeltaVergeGames</span>
+        <div class="group-card-links">
+          <a href="https://youtube.com/@DeltaVergeGames" target="_blank">
+            <span class="link-label">YouTube</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://discord.gg/Dj5Vk6TRtZ" target="_blank">
+            <span class="link-label">Discord</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://t.me/+HTa3YGH-gZRmMmMy" target="_blank">
+            <span class="link-label">Telegram</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://deltavergegames.itch.io" target="_blank">
+            <span class="link-label">Itch.io</span>
+            <span class="arrow">↗</span>
+          </a>
         </div>
-      </a>
-
-      <a target="_blank" href="https://discord.gg/Dj5Vk6TRtZ" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/delta-verge.png" alt="Delta Verge Discord" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">DS Server</div>
-          <span class="sub">DeltaVergeGames</span>
-        </div>
-      </a>
-
-      <a target="_blank" href="https://t.me/+HTa3YGH-gZRmMmMy" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/delta-verge.png" alt="Delta Verge Telegram" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">TG Channel</div>
-          <span class="sub">DeltaVergeGames</span>
-        </div>
-      </a>
-
-      <a target="_blank" href="https://deltavergegames.itch.io" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/delta-verge.png" alt="Delta Verge Itch.io" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">Itch.io</div>
-          <span class="sub">DeltaVergeGames</span>
-        </div>
-      </a>
+      </div>
     </div>
 
-    <!-- Self Channels -->
-    <div class="divider"><span>Self Channels</span></div>
+    <!-- Self -->
+    <div class="divider"><span>Self</span></div>
 
-    <div class="grid">
-      <a target="_blank" href="https://youtube.com/channel/UCVX6QOE7uOvud7J7Bi5XB6g" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/profile.jpg" alt="YouTube" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">YouTube</div>
-          <span class="sub">Peace Duke</span>
-        </div>
-      </a>
+    <div class="cards-grid">
 
-      <a target="_blank" href="https://twitch.tv/p3ac3_duk3/" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/profile.jpg" alt="Twitch" />
+      <div class="group-card">
+        <div class="group-card-top">
+          <img src="site/img/avatars/profile.jpg" alt="Peace Duke" class="round" />
+          <div class="group-card-info">
+            <span class="label">Channels</span>
+          </div>
         </div>
-        <div class="tile-footer">
-          <div class="label">Twitch</div>
-          <span class="sub">P3ac3_Duk3</span>
+        <div class="group-card-links">
+          <a href="https://youtube.com/channel/UCVX6QOE7uOvud7J7Bi5XB6g" target="_blank">
+            <span class="link-label">YouTube</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://twitch.tv/p3ac3_duk3/" target="_blank">
+            <span class="link-label">Twitch</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://t.me/peacedukedev" target="_blank">
+            <span class="link-label">Telegram</span>
+            <span class="arrow">↗</span>
+          </a>
         </div>
-      </a>
+      </div>
 
-      <a target="_blank" href="https://t.me/peacedukedev" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/profile.jpg" alt="Telegram" />
+      <div class="group-card">
+        <div class="group-card-top">
+          <img src="site/img/avatars/profile.jpg" alt="Peace Duke" class="round" />
+          <div class="group-card-info">
+            <span class="label">Profile</span>
+          </div>
         </div>
-        <div class="tile-footer">
-          <div class="label">Telegram</div>
-          <span class="sub">@peacedukedev</span>
+        <div class="group-card-links">
+          <a href="https://discord.com/users/528886591846875153" target="_blank">
+            <span class="link-label">Discord</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://t.me/pe4ceduk3" target="_blank">
+            <span class="link-label">Telegram</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://github.com/pe4ceduk3" target="_blank">
+            <span class="link-label">GitHub</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://steamcommunity.com/profiles/76561199543936353" target="_blank">
+            <span class="link-label">Steam</span>
+            <span class="arrow">↗</span>
+          </a>
+          <a href="https://www.reddit.com/u/pe4ceduk3" target="_blank">
+            <span class="link-label">Reddit</span>
+            <span class="arrow">↗</span>
+          </a>
         </div>
-      </a>
-    </div>
+      </div>
 
-    <!-- Self Profile -->
-    <div class="divider"><span>Self Profile</span></div>
-
-    <div class="grid">
-      <a target="_blank" href="https://discord.com/users/528886591846875153" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/profile.jpg" alt="Discord" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">Discord</div>
-          <span class="sub">@pe4ceduk3</span>
-        </div>
-      </a>
-
-      <a target="_blank" href="https://t.me/pe4ceduk3" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/profile.jpg" alt="Telegram" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">Telegram</div>
-          <span class="sub">@pe4ceduk3</span>
-        </div>
-      </a>
-
-      <a target="_blank" href="https://github.com/pe4ceduk3" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/profile.jpg" alt="GitHub" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">GitHub</div>
-          <span class="sub">Peace Duke</span>
-        </div>
-      </a>
-
-      <a target="_blank" href="https://steamcommunity.com/profiles/76561199543936353" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/profile.jpg" alt="Steam" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">Steam</div>
-          <span class="sub">Peace Duke</span>
-        </div>
-      </a>
-
-      <a target="_blank" href="https://www.reddit.com/u/pe4ceduk3" class="tile">
-        <div class="tile-img">
-          <img src="site/img/avatars/profile.jpg" alt="Reddit" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">Reddit</div>
-          <span class="sub">@pe4ceduk3</span>
-        </div>
-      </a>
     </div>
 
   </div>
