@@ -243,6 +243,155 @@
     }
 
     .group-card-links a:hover .arrow { opacity: 1; }
+
+    /* ── Progress rows inside group-card ── */
+    .gc-progress-list {
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .gc-progress-row {
+      padding: 11px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .gc-progress-row:last-child {
+      border-bottom: none;
+    }
+
+    .gc-progress-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .gc-progress-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .gc-progress-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--muted);
+      opacity: 0.7;
+      white-space: nowrap;
+    }
+
+    .gc-bar-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--white);
+      opacity: 0.55;
+      letter-spacing: 0.03em;
+    }
+
+    .gc-track {
+      height: 2px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .gc-fill {
+      height: 100%;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    .gc-fill.done { background: #4dff91; }
+
+    /* ── Progress card ── */
+    .progress-card-row {
+      border-top: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .progress-card-item {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .progress-card-item:last-child {
+      border-bottom: none;
+    }
+
+    .progress-card-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+
+    .progress-card-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .progress-card-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      flex-shrink: 0;
+    }
+
+    .progress-card-bar {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--white);
+      opacity: 0.6;
+      letter-spacing: 0.03em;
+    }
+
+    .progress-card-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 11px 20px;
+      text-decoration: none;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.15s;
+      cursor: pointer;
+    }
+
+    .progress-card-link:last-child {
+      border-bottom: none;
+    }
+
+    .progress-card-link:hover {
+      background: #1a1a1a;
+    }
+
+    .progress-card-link:hover .arrow {
+      opacity: 1;
+    }
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--white);
+      border-radius: 2px;
+    }
+
+    .progress-fill.done {
+      background: #4dff91;
+    }
   </style>
 </head>
 <body>
@@ -287,6 +436,118 @@
         </div>
       </a>
     </div>
+
+    <!-- ═══════════════════════════════════════════════
+         PROGRESS CARDS — редактировать только CARDS.
+         HTML и скрипт ниже не трогать.
+    ════════════════════════════════════════════════ -->
+    <script>
+      // ┌─────────────────────────────────────────────┐
+      // │  РЕДАКТИРОВАТЬ ТОЛЬКО ЭТОТ ОБЪЕКТ           │
+      // │                                             │
+      // │  title   — название карточки                │
+      // │  img     — путь к картинке (или "")         │
+      // │  items:                                     │
+      // │    name    — название этапа                 │
+      // │    percent — число 0–100                    │
+      // │    status  — необязательно; автоматически:  │
+      // │              0→WAITING, 1–99→LOADING,       │
+      // │              100→DONE                       │
+      // └─────────────────────────────────────────────┘
+      const PROGRESS_CARDS = [
+        {
+          title: "Current video",
+          img:   "site/img/avatars/profile.jpg",
+          items: [
+            { name: "Script",    percent: 100 },
+            { name: "Recording", percent: 60  },
+            { name: "Montage",   percent: 0   },
+            { name: "Thumbnail", percent: 0   },
+            { name: "Watch", percent: 100, link: "https://youtube.com/channel/UCVX6QOE7uOvud7J7Bi5XB6g" },
+          ]
+        },
+        {
+          title: "Delta Verge game",
+          img:   "site/img/avatars/delta-verge.png",
+          items: [
+            { name: "Mechanics", percent: 80  },
+            { name: "Art",       percent: 30  },
+            { name: "Release",   percent: 0, status: "WAITING" },
+          ]
+        },
+      ];
+    </script>
+
+    <div class="divider"><span>Progress</span></div>
+    <div class="cards-grid" id="progress-cards"></div>
+
+    <script>
+      // ── Ниже не трогать ───────────────────────────
+      const BLOCKS = 6;
+      const FILLED = "🟩";
+      const EMPTY  = "⬛️";
+
+      function autoStatus(item) {
+        if (item.status) return item.status;
+        if (item.percent >= 100) return "DONE";
+        if (item.percent === 0)  return "WAITING";
+        return "LOADING";
+      }
+
+      function buildBar(percent) {
+        const n = Math.round((percent / 100) * BLOCKS);
+        return Array.from({ length: BLOCKS }, (_, i) => i < n ? FILLED : EMPTY).join("");
+      }
+
+      const grid = document.getElementById("progress-cards");
+
+      PROGRESS_CARDS.forEach(card => {
+        const imgHtml = card.img
+          ? `<img src="${card.img}" alt="${card.title}" />`
+          : "";
+
+        const itemsHtml = card.items.map(item => {
+          const pct  = item.percent.toFixed(1);
+          const done = item.percent >= 100;
+
+          // Строка-ссылка — выглядит как оригинальная ссылка со стрелкой
+          if (item.link) {
+            return `
+              <a class="progress-card-link" href="${item.link}" target="_blank">
+                <span class="link-label">${item.name}</span>
+                <span class="arrow">↗</span>
+              </a>`;
+          }
+
+          // Строка-прогресс
+          const status = autoStatus(item);
+          return `
+            <div class="progress-card-item">
+              <div class="progress-card-header">
+                <span class="progress-card-name">${item.name}</span>
+                <span class="progress-card-meta">${status} · ${pct}%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill ${done ? 'done' : ''}" style="width:${pct}%"></div>
+              </div>
+            </div>`;
+        }).join("");
+
+        const el = document.createElement("div");
+        el.className = "group-card";
+        el.innerHTML = `
+          <div class="group-card-top">
+            ${imgHtml}
+            <div class="group-card-info">
+              <span class="label">${card.title}</span>
+            </div>
+          </div>
+          <div class="progress-card-row">${itemsHtml}</div>
+        `;
+        grid.appendChild(el);
+      });
+    </script>
+    <!-- ═══════════════════════════════════════════ -->
 
     <div class="divider"><span>Delta Verge</span></div>
 
@@ -378,7 +639,7 @@
       </div>  
     </div>
 
-    <div class="divider"><span>site: v1.2.0-2026.04.25-Release</span></div>
+    <div class="divider"><span>site: v1.3.0-2026.05.05-Release</span></div>
 
   </div>
 </body>
