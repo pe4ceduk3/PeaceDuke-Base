@@ -406,7 +406,7 @@
     <div class="divider"><span>Source</span></div>
 
     <div class="grid">
-      <a href="https://github.com/pe4ceduk3/Unable_to_fly/releases/tag/0.1.0.260323P" class="tile" target="_blank">
+      <!-- <a href="https://github.com/pe4ceduk3/Unable_to_fly/releases/tag/0.1.0.260323P" class="tile" target="_blank">
         <div class="tile-img">
           <img src="site/img/avatars/unable-to-fly.png" alt="Unable to fly" />
         </div>
@@ -414,7 +414,7 @@
           <div class="label">Unable to fly</div>
           <span class="sub">v0.1.0.260323P</span>
         </div>
-      </a>
+      </a> -->
 
       <a href="https://github.com/pe4ceduk3/PeaceDuke-Base" class="tile" target="_blank">
         <div class="tile-img">
@@ -437,66 +437,55 @@
       </a>
     </div>
 
-    <!-- ═══════════════════════════════════════════════
-         PROGRESS CARDS — редактировать только CARDS.
-         HTML и скрипт ниже не трогать.
-    ════════════════════════════════════════════════ -->
+
     <script>
-      // ┌─────────────────────────────────────────────┐
-      // │  РЕДАКТИРОВАТЬ ТОЛЬКО ЭТОТ ОБЪЕКТ           │
-      // │                                             │
-      // │  title   — название карточки                │
-      // │  img     — путь к картинке (или "")         │
-      // │  items:                                     │
-      // │    name    — название этапа                 │
-      // │    percent — число 0–100                    │
-      // │    status  — необязательно; автоматически:  │
-      // │              0→WAITING, 1–99→LOADING,       │
-      // │              100→DONE                       │
-      // └─────────────────────────────────────────────┘
       const PROGRESS_CARDS = [
         {
-          title: "Current video",
-          img:   "site/img/avatars/profile.jpg",
+          title: "Video about OOP",
+          img:   "site/img/avatars/delta-verge.png",
           items: [
-            { name: "Script",    percent: 100 },
-            { name: "Recording", percent: 60  },
-            { name: "Montage",   percent: 0   },
-            { name: "Thumbnail", percent: 0   },
-            { name: "Watch", percent: 100, link: "https://youtube.com/channel/UCVX6QOE7uOvud7J7Bi5XB6g" },
+            { name: "Script",    percent: 16.6 },
+            // { name: "Recording", percent: 0  },
+            // { name: "Montage",   percent: 0   },
+            // { name: "Thumbnail", percent: 0   },
+            // { name: "Watch", percent: 0, link: "https://youtube.com/channel/UCVX6QOE7uOvud7J7Bi5XB6g" },
           ]
         },
         {
-          title: "Delta Verge game",
-          img:   "site/img/avatars/delta-verge.png",
+          title: "Unable to fly",
+          img: "site/img/avatars/unable-to-fly.png",
           items: [
-            { name: "Mechanics", percent: 80  },
-            { name: "Art",       percent: 30  },
-            { name: "Release",   percent: 0, status: "WAITING" },
+            { name: "Developing", percent: 0.1, status: "DEVELOP"},
+            { name: "Devlog", percent: 0, link: "https://discord.com/channels/1406311139675209878/1491371259504754789" },
+            { name: "Feedback", percent: 0, link: "https://discord.com/channels/1406311139675209878/1499870450002432201" },
+            { name: "Bug report", percent: 0, link: "https://discord.com/channels/1406311139675209878/1500601249035452477" },
+            { name: "Questions", percent: 0, link: "https://discord.com/channels/1406311139675209878/1500603381918470376" },
+            { name: "Download v0.1.0.260323P", percent: 0, link: "https://github.com/pe4ceduk3/Unable_to_fly/releases/tag/0.1.0.260323P" },
+            // { name: "", percent: 0, link: "" },
           ]
+
         },
+        // {
+        //   title: "Delta Verge game",
+        //   img:   "site/img/avatars/delta-verge.png",
+        //   items: [
+        //     { name: "Mechanics", percent: 80  },
+        //     { name: "Art",       percent: 30  },
+        //     { name: "Release",   percent: 0, status: "WAITING" },
+        //   ]
+        // },
       ];
     </script>
 
-    <div class="divider"><span>Progress</span></div>
+    <div class="divider"><span>Projects progress</span></div>
     <div class="cards-grid" id="progress-cards"></div>
 
     <script>
-      // ── Ниже не трогать ───────────────────────────
-      const BLOCKS = 6;
-      const FILLED = "🟩";
-      const EMPTY  = "⬛️";
-
       function autoStatus(item) {
         if (item.status) return item.status;
         if (item.percent >= 100) return "DONE";
         if (item.percent === 0)  return "WAITING";
         return "LOADING";
-      }
-
-      function buildBar(percent) {
-        const n = Math.round((percent / 100) * BLOCKS);
-        return Array.from({ length: BLOCKS }, (_, i) => i < n ? FILLED : EMPTY).join("");
       }
 
       const grid = document.getElementById("progress-cards");
@@ -510,7 +499,7 @@
           const pct  = item.percent.toFixed(1);
           const done = item.percent >= 100;
 
-          // Строка-ссылка — выглядит как оригинальная ссылка со стрелкой
+      
           if (item.link) {
             return `
               <a class="progress-card-link" href="${item.link}" target="_blank">
@@ -519,7 +508,7 @@
               </a>`;
           }
 
-          // Строка-прогресс
+
           const status = autoStatus(item);
           return `
             <div class="progress-card-item">
@@ -547,8 +536,7 @@
         grid.appendChild(el);
       });
     </script>
-    <!-- ═══════════════════════════════════════════ -->
-
+   
     <div class="divider"><span>Delta Verge</span></div>
 
     <div class="cards-grid">
@@ -639,7 +627,7 @@
       </div>  
     </div>
 
-    <div class="divider"><span>site: v1.3.0-2026.05.05-Release</span></div>
+    <div class="divider"><span>site: v1.3.1-2026.05.05-Release</span></div>
 
   </div>
 </body>
