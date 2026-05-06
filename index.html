@@ -36,7 +36,6 @@
       gap: 40px;
     }
 
-    /* ── Profile ── */
     .profile {
       display: flex;
       flex-direction: column;
@@ -46,441 +45,205 @@
     }
 
     .profile img {
-      width: 88px;
-      height: 88px;
+      width: 88px; height: 88px;
       border-radius: 50%;
       object-fit: cover;
       border: 2px solid var(--border);
     }
 
     .profile h1 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: var(--accent);
+      font-size: 1.6rem; font-weight: 800;
+      letter-spacing: -0.02em; color: var(--accent);
     }
 
     .profile p {
-      font-size: 0.9rem;
-      color: var(--muted);
+      font-size: 0.9rem; color: var(--muted);
       font-family: 'Space Mono', monospace;
-      max-width: 400px;
-      line-height: 1.6;
+      max-width: 400px; line-height: 1.6;
     }
 
-    /* ── Divider ── */
-    .divider {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
+    .divider { display: flex; align-items: center; gap: 14px; }
 
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
+    .divider::before, .divider::after {
+      content: ''; flex: 1; height: 1px; background: var(--border);
     }
 
     .divider span {
-      font-size: 0.7rem;
-      font-family: 'Space Mono', monospace;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      white-space: nowrap;
+      font-size: 0.7rem; font-family: 'Space Mono', monospace;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.12em; white-space: nowrap;
     }
 
-    /* ── Grid — всегда 2 колонки, на широком 4 ── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
 
     @media (min-width: 700px) {
       .grid { grid-template-columns: repeat(4, 1fr); }
       body { padding: 64px 24px; }
     }
 
-    /* ── Tile (Source) ── */
     .tile {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      background: var(--surface);
-      display: flex;
-      flex-direction: column;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; background: var(--surface);
+      display: flex; flex-direction: column;
       text-decoration: none;
       transition: border-color 0.2s, transform 0.2s;
     }
 
-    .tile:hover {
-      border-color: #444;
-      transform: translateY(-2px);
-    }
-
-    .tile-img {
-      padding: 14px 14px 0;
-    }
+    .tile:hover { border-color: #444; transform: translateY(-2px); }
+    .tile-img { padding: 14px 14px 0; }
 
     .tile-img img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 8px;
-      display: block;
-      background: var(--border);
+      width: 100%; aspect-ratio: 1/1; object-fit: cover;
+      border-radius: 8px; display: block; background: var(--border);
     }
 
-    .tile-footer {
-      padding: 10px 14px 14px;
-    }
+    .tile-footer { padding: 10px 14px 14px; }
 
     .tile-footer .label {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 4px;
-      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem; font-weight: 700;
+      color: var(--accent); margin-bottom: 4px; font-family: 'Syne', sans-serif;
     }
 
     .tile-footer .sub {
-      display: block;
-      font-size: 0.78rem;
+      display: block; font-size: 0.78rem;
       font-family: 'Space Mono', monospace;
-      color: var(--white);
-      opacity: 0.55;
-      transition: opacity 0.15s;
-      word-break: break-all;
+      color: var(--white); opacity: 0.55;
+      transition: opacity 0.15s; word-break: break-all;
     }
 
     .tile:hover .sub { opacity: 1; }
 
-    /* ── Group Card grid — 1 колонка на мобиле, 2 на пк ── */
-    .cards-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-    }
+    /* ── cards-grid: вставляется renderCards() ── */
+    .cards-grid { display: grid; grid-template-columns: 1fr; gap: 12px; }
 
     @media (min-width: 700px) {
       .cards-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
     .group-card {
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-      overflow: hidden;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      background: var(--surface); overflow: hidden;
     }
 
-    .group-card-top {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 20px;
-    }
+    .group-card-top { display: flex; align-items: center; gap: 16px; padding: 20px; }
 
     .group-card-top img {
-      width: 48px;
-      height: 48px;
-      border-radius: 10px;
-      object-fit: cover;
-      flex-shrink: 0;
-      border: 1px solid var(--border);
+      width: 48px; height: 48px; border-radius: 10px;
+      object-fit: cover; flex-shrink: 0; border: 1px solid var(--border);
     }
 
-    .group-card-top img.round {
-      border-radius: 50%;
-    }
+    .group-card-top img.round { border-radius: 50%; }
+
+    .group-card-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 
     .group-card-info .label {
-      font-size: 1rem;
-      font-weight: 800;
-      color: var(--accent);
-      font-family: 'Syne', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--accent); font-family: 'Syne', sans-serif;
     }
 
-    .group-card-links {
-      border-top: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
+    .card-desc {
+      font-size: 0.73rem; font-family: 'Space Mono', monospace;
+      color: var(--muted); opacity: 0.65; line-height: 1.5;
     }
+
+    .group-card-links { border-top: 1px solid var(--border); display: flex; flex-direction: column; }
 
     .group-card-links a {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 11px 20px;
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.15s;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 11px 20px; text-decoration: none;
+      border-bottom: 1px solid var(--border); transition: background 0.15s;
     }
 
-    .group-card-links a:last-child {
-      border-bottom: none;
-    }
-
-    .group-card-links a:hover {
-      background: #1a1a1a;
-    }
+    .group-card-links a:last-child { border-bottom: none; }
+    .group-card-links a:hover { background: #1a1a1a; }
 
     .link-label {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent);
-      font-family: 'Syne', sans-serif;
+      font-size: 0.88rem; font-weight: 700;
+      color: var(--accent); font-family: 'Syne', sans-serif;
     }
 
     .arrow {
-      color: var(--muted);
-      font-size: 0.75rem;
-      opacity: 0.4;
-      transition: opacity 0.15s;
-      flex-shrink: 0;
+      color: var(--muted); font-size: 0.75rem;
+      opacity: 0.4; transition: opacity 0.15s; flex-shrink: 0;
     }
 
     .group-card-links a:hover .arrow { opacity: 1; }
 
-    /* ── Progress rows inside group-card ── */
-    .gc-progress-list {
-      border-top: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
+    /* ── progress rows ── */
+    .pc-row { border-top: 1px solid var(--border); display: flex; flex-direction: column; }
+
+    .pc-item { display: flex; flex-direction: column; border-bottom: 1px solid var(--border); }
+    .pc-item:last-child { border-bottom: none; }
+
+    a.pc-item { text-decoration: none; transition: background 0.15s; }
+    a.pc-item:hover { background: #1a1a1a; }
+    a.pc-item:hover .arrow { opacity: 1; }
+
+    .pc-top {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 8px; padding: 11px 20px;
     }
 
-    .gc-progress-row {
-      padding: 11px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .pc-has-bar .pc-top { padding-bottom: 6px; }
+
+    .pc-name {
+      font-family: 'Syne', sans-serif; font-size: 0.88rem;
+      font-weight: 700; color: var(--accent);
     }
 
-    .gc-progress-row:last-child {
-      border-bottom: none;
+    .pc-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+
+    .pc-meta {
+      font-family: 'Space Mono', monospace; font-size: 0.68rem;
+      color: var(--muted); white-space: nowrap;
     }
 
-    .gc-progress-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
+    .pc-badge {
+      font-family: 'Space Mono', monospace; font-size: 0.65rem;
+      color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase;
+      border: 1px solid var(--border); padding: 2px 7px; border-radius: 4px;
     }
 
-    .gc-progress-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent);
+    .pc-track { height: 3px; background: var(--border); overflow: hidden; margin: 0 20px; }
+
+    .pc-fill { height: 100%; background: var(--white); border-radius: 2px; }
+    .pc-fill.done { background: #4dff91; }
+
+    .pc-description {
+      font-family: 'Space Mono', monospace; font-size: 0.72rem;
+      color: var(--muted); opacity: 0.8; line-height: 1.6; padding: 6px 20px 4px;
     }
 
-    .gc-progress-meta {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--muted);
-      opacity: 0.7;
-      white-space: nowrap;
-    }
-
-    .gc-bar-text {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--white);
-      opacity: 0.55;
-      letter-spacing: 0.03em;
-    }
-
-    .gc-track {
-      height: 2px;
-      background: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .gc-fill {
-      height: 100%;
-      background: var(--white);
-      border-radius: 2px;
-    }
-
-    .gc-fill.done { background: #4dff91; }
-
-    /* ── Progress card ── */
-    .progress-card-row {
-      border-top: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-    }
-
-    .progress-card-item {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      padding: 12px 20px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .progress-card-item:last-child {
-      border-bottom: none;
-    }
-
-    .progress-card-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-    }
-
-    .progress-card-name {
-      font-family: 'Syne', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent);
-    }
-
-    .progress-card-meta {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-      flex-shrink: 0;
-    }
-
-    .progress-card-bar {
-      font-family: 'Space Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--white);
-      opacity: 0.6;
-      letter-spacing: 0.03em;
-    }
-
-    .progress-card-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 11px 20px;
-      text-decoration: none;
-      border-bottom: 1px solid var(--border);
-      transition: background 0.15s;
-      cursor: pointer;
-    }
-
-    .progress-card-link:last-child {
-      border-bottom: none;
-    }
-
-    .progress-card-link:hover {
-      background: #1a1a1a;
-    }
-
-    .progress-card-link:hover .arrow {
-      opacity: 1;
-    }
-      height: 3px;
-      background: var(--border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: var(--white);
-      border-radius: 2px;
-    }
-
-    .progress-fill.done {
-      background: #4dff91;
+    .pc-comment {
+      font-family: 'Space Mono', monospace; font-size: 0.68rem;
+      color: var(--muted); opacity: 0.5; line-height: 1.5; padding: 4px 20px 10px;
     }
   </style>
-</head>
-<body>
-  <div class="container">
 
-    <div class="profile">
-      <img src="site/img/avatars/profile.jpg" alt="Peace Duke avatar" />
-      <h1>Peace Duke</h1>
-      <p>Я Дюк - GameDevelopmentEnjoyer. Рад любому <b>честному</b> фидбеку, а еще если критикуешь - предлагай и обосновывай.</p>
-    </div>
+  <!-- ═══════════════════════════════════════════════════════════
+       ГЛОБАЛЬНАЯ ФУНКЦИЯ — не трогать.
+       Использование в HTML:
 
-    <div class="divider"><span>Source</span></div>
+         <div class="cards-grid" id="my-grid"></div>
+         <script>
+           renderCards("my-grid", [
+             { title: "...", img: "...", desc: "...", items: [
+               { name: "Script",  percent: 40 },
+               { name: "Release", status: "SOON" },
+               { name: "GitHub",  link: "https://..." },
+               { description: "Любой текст без названия" },
+               { name: "Note",    comment: "мелкая заметка" },
+             ]}
+           ]);
+         </script>
 
-    <div class="grid">
-      <!-- <a href="https://github.com/pe4ceduk3/Unable_to_fly/releases/tag/0.1.0.260323P" class="tile" target="_blank">
-        <div class="tile-img">
-          <img src="site/img/avatars/unable-to-fly.png" alt="Unable to fly" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">Unable to fly</div>
-          <span class="sub">v0.1.0.260323P</span>
-        </div>
-      </a> -->
+       Все поля необязательны. Работают в любых комбинациях.
+  ════════════════════════════════════════════════════════════ -->
+  <script>
+    function renderCards(targetId, cards) {
+      const grid = document.getElementById(targetId);
+      if (!grid) return;
 
-      <a href="https://github.com/pe4ceduk3/PeaceDuke-Base" class="tile" target="_blank">
-        <div class="tile-img">
-          <img src="site/img/avatars/peaceduke-base.gif" alt="PeaceDuke Base" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">PeaceDuke-Base</div>
-          <span class="sub">GitHub</span>
-        </div>
-      </a>
-
-      <a href="https://github.com/pe4ceduk3/PeaceDuke-Base/wiki" class="tile" target="_blank">
-        <div class="tile-img">
-          <img src="site/img/avatars/github.png" alt="PeaceDuke Base" />
-        </div>
-        <div class="tile-footer">
-          <div class="label">My wiki</div>
-          <span class="sub">GitHub</span>
-        </div>
-      </a>
-    </div>
-
-
-    <script>
-      const PROGRESS_CARDS = [
-        {
-          title: "Video about OOP",
-          img:   "site/img/avatars/delta-verge.png",
-          items: [
-            { name: "Script",    percent: 16.6 },
-            // { name: "Recording", percent: 0  },
-            // { name: "Montage",   percent: 0   },
-            // { name: "Thumbnail", percent: 0   },
-            // { name: "Watch", percent: 0, link: "https://youtube.com/channel/UCVX6QOE7uOvud7J7Bi5XB6g" },
-          ]
-        },
-        {
-          title: "Unable to fly",
-          img: "site/img/avatars/unable-to-fly.png",
-          items: [
-            { name: "Developing", percent: 0.1, status: "DEVELOP"},
-            { name: "Devlog", percent: 0, link: "https://discord.com/channels/1406311139675209878/1491371259504754789" },
-            { name: "Feedback", percent: 0, link: "https://discord.com/channels/1406311139675209878/1499870450002432201" },
-            { name: "Bug report", percent: 0, link: "https://discord.com/channels/1406311139675209878/1500601249035452477" },
-            { name: "Questions", percent: 0, link: "https://discord.com/channels/1406311139675209878/1500603381918470376" },
-            { name: "Download v0.1.0.260323P", percent: 0, link: "https://github.com/pe4ceduk3/Unable_to_fly/releases/tag/0.1.0.260323P" },
-            // { name: "", percent: 0, link: "" },
-          ]
-
-        },
-        // {
-        //   title: "Delta Verge game",
-        //   img:   "site/img/avatars/delta-verge.png",
-        //   items: [
-        //     { name: "Mechanics", percent: 80  },
-        //     { name: "Art",       percent: 30  },
-        //     { name: "Release",   percent: 0, status: "WAITING" },
-        //   ]
-        // },
-      ];
-    </script>
-
-    <div class="divider"><span>Projects progress</span></div>
-    <div class="cards-grid" id="progress-cards"></div>
-
-    <script>
       function autoStatus(item) {
         if (item.status) return item.status;
         if (item.percent >= 100) return "DONE";
@@ -488,146 +251,173 @@
         return "LOADING";
       }
 
-      const grid = document.getElementById("progress-cards");
+      function renderItem(item) {
+        const hasBar  = item.percent !== undefined && item.percent !== null;
+        const hasName = !!item.name;
+        const hasLink = !!item.link;
 
-      PROGRESS_CARDS.forEach(card => {
-        const imgHtml = card.img
-          ? `<img src="${card.img}" alt="${card.title}" />`
-          : "";
-
-        const itemsHtml = card.items.map(item => {
-          const pct  = item.percent.toFixed(1);
-          const done = item.percent >= 100;
-
-      
-          if (item.link) {
-            return `
-              <a class="progress-card-link" href="${item.link}" target="_blank">
-                <span class="link-label">${item.name}</span>
-                <span class="arrow">↗</span>
-              </a>`;
-          }
-
-
+        // правая часть шапки
+        let rightHtml = "";
+        if (hasLink) {
+          rightHtml = `<span class="arrow">↗</span>`;
+        } else if (hasBar) {
+          const pct    = parseFloat(item.percent).toFixed(1);
           const status = autoStatus(item);
-          return `
-            <div class="progress-card-item">
-              <div class="progress-card-header">
-                <span class="progress-card-name">${item.name}</span>
-                <span class="progress-card-meta">${status} · ${pct}%</span>
-              </div>
-              <div class="progress-track">
-                <div class="progress-fill ${done ? 'done' : ''}" style="width:${pct}%"></div>
-              </div>
-            </div>`;
-        }).join("");
+          rightHtml = `<span class="pc-meta">${status} · ${pct}%</span>`;
+        } else if (item.status) {
+          rightHtml = `<span class="pc-badge">${item.status}</span>`;
+        }
+
+        // шапка
+        const topHtml = (hasName || rightHtml) ? `
+          <div class="pc-top">
+            ${hasName ? `<span class="pc-name">${item.name}</span>` : ""}
+            ${rightHtml ? `<div class="pc-right">${rightHtml}</div>` : ""}
+          </div>` : "";
+
+        // бар
+        const barHtml = hasBar ? (() => {
+          const pct  = parseFloat(item.percent).toFixed(1);
+          const done = item.percent >= 100;
+          return `<div class="pc-track"><div class="pc-fill ${done ? 'done' : ''}" style="width:${pct}%"></div></div>`;
+        })() : "";
+
+        const descHtml    = item.description ? `<div class="pc-description">${item.description}</div>` : "";
+        const commentHtml = item.comment     ? `<div class="pc-comment">${item.comment}</div>`         : "";
+
+        const cls      = "pc-item" + (hasBar ? " pc-has-bar" : "");
+        const tag      = hasLink ? "a" : "div";
+        const linkAttr = hasLink ? ` href="${item.link}" target="_blank"` : "";
+
+        return `<${tag} class="${cls}"${linkAttr}>${topHtml}${barHtml}${descHtml}${commentHtml}</${tag}>`;
+      }
+
+      cards.forEach(card => {
+        const imgHtml   = card.img   ? `<img src="${card.img}" alt="${card.title || ''}" />` : "";
+        const titleHtml = card.title ? `<span class="label">${card.title}</span>`           : "";
+        const descHtml  = card.desc  ? `<span class="card-desc">${card.desc}</span>`        : "";
+        const itemsHtml = (card.items || []).map(renderItem).join("");
 
         const el = document.createElement("div");
         el.className = "group-card";
         el.innerHTML = `
           <div class="group-card-top">
             ${imgHtml}
-            <div class="group-card-info">
-              <span class="label">${card.title}</span>
-            </div>
+            <div class="group-card-info">${titleHtml}${descHtml}</div>
           </div>
-          <div class="progress-card-row">${itemsHtml}</div>
+          <div class="pc-row">${itemsHtml}</div>
         `;
         grid.appendChild(el);
       });
-    </script>
-   
-    <div class="divider"><span>Delta Verge</span></div>
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
 
-    <div class="cards-grid">
-      <div class="group-card">
-        <div class="group-card-top">
-          <img src="site/img/avatars/delta-verge.png" alt="Delta Verge" />
-          <div class="group-card-info">
-            <span class="label">Delta Verge</span>
-          </div>
-        </div>
-        <div class="group-card-links">
-          <a href="https://youtube.com/@DeltaVergeGames" target="_blank">
-            <span class="link-label">YouTube</span>
-            <span class="arrow">↗</span>
-          </a>
-          <a href="https://discord.gg/Dj5Vk6TRtZ" target="_blank">
-            <span class="link-label">Discord</span>
-            <span class="arrow">↗</span>
-          </a>
-          <a href="https://t.me/+HTa3YGH-gZRmMmMy" target="_blank">
-            <span class="link-label">Telegram</span>
-            <span class="arrow">↗</span>
-          </a>
-          <a href="https://deltavergegames.itch.io" target="_blank">
-            <span class="link-label">Itch.io</span>
-            <span class="arrow">↗</span>
-          </a>
-        </div>
-      </div>
+    <div class="profile">
+      <img src="site/img/avatars/profile.jpg" alt="Peace Duke avatar" />
+      <h1>Peace Duke</h1>
+      <p>Я "<i>Дюк</i>" - GameDevelopmentEnjoyer. Рад любому <b>честному</b> фидбеку, но если критикуешь - обосновывай и предлагай.</p>
     </div>
+
+    <div class="divider"><span>Source</span></div>
+
+    <div class="grid">
+      <a href="https://github.com/pe4ceduk3/PeaceDuke-Base" class="tile" target="_blank">
+        <div class="tile-img"><img src="site/img/avatars/peaceduke-base.gif" alt="PeaceDuke Base" /></div>
+        <div class="tile-footer">
+          <div class="label">PeaceDuke-Base</div>
+          <!-- <span class="sub">Моя база данных</span> -->
+        </div>
+      </a>
+
+      <a href="https://github.com/pe4ceduk3/PeaceDuke-Base/wiki" class="tile" target="_blank">
+        <div class="tile-img"><img src="site/img/avatars/github.png" alt="My wiki" /></div>
+        <div class="tile-footer">
+          <div class="label">My wiki</div>
+          <!-- <span class="sub"></span> -->
+        </div>
+      </a>
+    </div>
+
+    <div class="divider"><span>Projects progress</span></div>
+    <div class="cards-grid" id="projects-grid"></div>
+    <script>
+      renderCards("projects-grid", [
+        {
+          title: "Video about OOP",
+          img:   "site/img/avatars/delta-verge.png",
+          desc:  "Объясню ООП для новичков",
+          items: [
+            { name: "Script", percent: 17.5 },
+            { name: "Recording", status: "NOT STARTED" },
+            { name: "Montage", status: "NOT STARTED" },
+            { name: "Thumbnail", status: "NOT STARTED" },
+            { name: "Watch link", status: "SOON" },
+          ]
+        },
+        {
+          title: "Unable to fly",
+          img:   "site/img/avatars/unable-to-fly.png",
+          desc: "v0.1.0.260323-Prototype",
+          items: [
+            { name: "Developing", percent: 3, status: "DEVELOP", comment: "Разработка замедлилось, но я не брошу" },
+            { name: "Download ", link: "https://github.com/pe4ceduk3/Unable_to_fly/releases/tag/0.1.0.260323P" },
+            { name: "Devlog", link: "https://discord.com/channels/1406311139675209878/1491371259504754789" },
+            { name: "Feedback", link: "https://discord.com/channels/1406311139675209878/1499870450002432201" },
+            { name: "Bug report", link: "https://discord.com/channels/1406311139675209878/1500601249035452477" },
+            { name: "Questions", link: "https://discord.com/channels/1406311139675209878/1500603381918470376" },
+          ]
+        },
+      ]);
+    </script>
+
+    <div class="divider"><span>Delta Verge</span></div>
+    <div class="cards-grid" id="dv-grid"></div>
+    <script>
+      renderCards("dv-grid", [
+        {
+          title: "Delta Verge",
+          img:   "site/img/avatars/delta-verge.png",
+          items: [
+            { name: "YouTube", link: "https://youtube.com/@DeltaVergeGames" },
+            { name: "Discord", link: "https://discord.gg/Dj5Vk6TRtZ" },
+            { name: "Telegram", link: "https://t.me/+HTa3YGH-gZRmMmMy" },
+            { name: "Itch.io", link: "https://deltavergegames.itch.io" },
+          ]
+        },
+      ]);
+    </script>
 
     <div class="divider"><span>Self</span></div>
+    <div class="cards-grid" id="self-grid"></div>
+    <script>
+      renderCards("self-grid", [
+        {
+          title: "Channels",
+          img:   "site/img/avatars/profile.jpg",
+          items: [
+            { name: "YouTube", link: "https://youtube.com/channel/UCVX6QOE7uOvud7J7Bi5XB6g" },
+            { name: "Twitch", link: "https://twitch.tv/p3ac3_duk3/" },
+            { name: "Telegram", link: "https://t.me/peacedukedev" },
+          ]
+        },
+        {
+          title: "Profile",
+          img:   "site/img/avatars/profile.jpg",
+          items: [
+            { name: "Discord", link: "https://discord.com/users/528886591846875153" },
+            { name: "Telegram", link: "https://t.me/pe4ceduk3" },
+            { name: "GitHub", link: "https://github.com/pe4ceduk3" },
+            { name: "Steam", link: "https://steamcommunity.com/profiles/76561199543936353" },
+            { name: "Reddit", link: "https://www.reddit.com/u/pe4ceduk3" },
+          ]
+        },
+      ]);
+    </script>
 
-    <div class="cards-grid">
-
-      <div class="group-card">
-        <div class="group-card-top">
-          <img src="site/img/avatars/profile.jpg" alt="Peace Duke" class="round" />
-          <div class="group-card-info">
-            <span class="label">Channels</span>
-          </div>
-        </div>
-        <div class="group-card-links">
-          <a href="https://youtube.com/channel/UCVX6QOE7uOvud7J7Bi5XB6g" target="_blank">
-            <span class="link-label">YouTube</span>
-            <span class="arrow">↗</span>
-          </a>
-          <a href="https://twitch.tv/p3ac3_duk3/" target="_blank">
-            <span class="link-label">Twitch</span>
-            <span class="arrow">↗</span>
-          </a>
-          <a href="https://t.me/peacedukedev" target="_blank">
-            <span class="link-label">Telegram</span>
-            <span class="arrow">↗</span>
-          </a>
-        </div>
-      </div>
-
-      <div class="group-card">
-        <div class="group-card-top">
-          <img src="site/img/avatars/profile.jpg" alt="Peace Duke" class="round" />
-          <div class="group-card-info">
-            <span class="label">Profile</span>
-          </div>
-        </div>
-        <div class="group-card-links">
-          <a href="https://discord.com/users/528886591846875153" target="_blank">
-            <span class="link-label">Discord</span>
-            <span class="arrow">↗</span>
-          </a>
-          <a href="https://t.me/pe4ceduk3" target="_blank">
-            <span class="link-label">Telegram</span>
-            <span class="arrow">↗</span>
-          </a>
-          <a href="https://github.com/pe4ceduk3" target="_blank">
-            <span class="link-label">GitHub</span>
-            <span class="arrow">↗</span>
-          </a>
-          <a href="https://steamcommunity.com/profiles/76561199543936353" target="_blank">
-            <span class="link-label">Steam</span>
-            <span class="arrow">↗</span>
-          </a>
-          <a href="https://www.reddit.com/u/pe4ceduk3" target="_blank">
-            <span class="link-label">Reddit</span>
-            <span class="arrow">↗</span>
-          </a>
-        </div>
-      </div>  
-    </div>
-
-    <div class="divider"><span>site: v1.3.1-2026.05.05-Release</span></div>
+    <div class="divider"><span>site: v1.5.0-2026.05.06-Release</span></div>
 
   </div>
 </body>
